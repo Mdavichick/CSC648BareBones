@@ -1,18 +1,32 @@
 import './App.css';
 import {useState} from "react";
+import Axios from "axios";
 
 function App() {
 
   const [name, setName] = useState("");
-  const [pnumber, setPhone] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [id, setID] = useState(0);
+  const [userid, setID] = useState(0);
   const [password, setPassword] = useState("");
 
   const displayInfo = () => {
-    console.log(name + pnumber + email + id + password);
+    console.log(name + phone + email + userid + password);
   };
   
+
+  const addUser = () => {
+    Axios.post('http://localhost:3001/create', {
+      userid: userid, 
+      name: name, 
+      phone: phone, 
+      email: email, 
+      password: password
+    }).then(() => {
+      console.log("success");
+    });
+  };
+
   return (
     <div className="App">
       <div className="information">
@@ -32,7 +46,7 @@ function App() {
           <label>Password</label>
           <input type="text"
             onChange={(event) => {setPassword(event.target.value);}}/>
-          <button onClick={displayInfo}>Add User</button>
+          <button onClick={addUser}>Add User</button>
       </div>
     </div>
   );
