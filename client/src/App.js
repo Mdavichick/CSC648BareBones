@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
+
+  const [name, setName] = useState("");
+  const [pnumber, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [id, setID] = useState(0);
+  const [password, setPassword] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="information">
+      <h1>Create User</h1>
+      <label>Name</label>
+      <input type="text" />
+      <label>Phone Number</label>
+      <input type="text" />
+      <label>Email</label>
+      <input type="email" />
+      <label>Student ID</label>
+      <input type="number" />
+      <label>Password</label>
+      <input type="number" />
+      <button>Add User</button>
+      </div>
     </div>
   );
 }
