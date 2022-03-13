@@ -13,11 +13,10 @@ function CreateUser() {
   const [userid, setID] = useState(0);
   const [password, setPassword] = useState("");
 
-  const displayInfo = () => {
-    console.log(name + phone + email + userid + password);
-  };
+  // const displayInfo = () => {
+  //   console.log(name + phone + email + userid + password);
+  // };
   
-
   const addUser = () => {
     Axios.post('http://localhost:3001/create', {
       userid: userid, 
