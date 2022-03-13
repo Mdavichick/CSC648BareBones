@@ -32,6 +32,16 @@ app.post('/create', (req, res) => {
     );
 })
 
+app.get('/users', (req, res) => {
+    db.query("SELECT * FROM users", (err, result) => {
+        if (err){
+            console.log(err);
+        } else{
+            res.send(result);
+        }
+    })
+});
+
 app.listen(3001, () => {
     console.log("Your server is running on port 3001");
 })
