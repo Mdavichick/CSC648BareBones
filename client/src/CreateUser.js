@@ -1,6 +1,9 @@
 import './App.css';
+import React from "react";
 import {useState} from "react";
 import Axios from "axios";
+import {Link} from "react-router-dom";
+
 
 function CreateUser() {
 
@@ -29,6 +32,7 @@ function CreateUser() {
 
   return (
     <div className="App">
+    <Link to ="/results"><button>Results Page</button></Link>
       <div className="information">
         <h1>Create User</h1>
           <label>Name</label>
@@ -49,6 +53,8 @@ function CreateUser() {
           <button onClick={addUser}>Add User</button>
       </div>
     </div>
+    
+   
   );
 }
 
