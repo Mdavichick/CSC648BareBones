@@ -33,29 +33,29 @@ app.post('/create', (req, res) => {
     );
 })
 
-app.get('/users', (request, response) => {
-    db.query("SELECT * FROM users", (err, result) => {
-        if (err){
-            console.log(err);
-        } else{
-            response.send(result);
-        }
-    })
-});
-
-// Failed attempt of using params
 // app.get('/users', (request, response) => {
-//     // const ptag = request.query.ptag;
-//     // const pname = request.query.pname;
 //     db.query("SELECT * FROM users", (err, result) => {
 //         if (err){
 //             console.log(err);
 //         } else{
 //             response.send(result);
 //         }
-//         // console.log("test:" + ptag + pname);
 //     })
 // });
+
+// Failed attempt of using params
+app.get('/users', (request, response) => {
+    const ptag = request.query.ptag;
+    const pname = request.query.pname;
+    db.query("SELECT * FROM users", (err, result) => {
+        if (err){
+            console.log(err);
+        } else{
+            response.send(result);
+        }
+        console.log(ptag+", "+pname);
+    })
+});
 
 app.listen(3001, () => {
     console.log("Your server is running on port 3001");

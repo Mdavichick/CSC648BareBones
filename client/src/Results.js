@@ -12,27 +12,27 @@ function Results() {
     // store all db results within a list
     const [userList, setUserList] = useState([]);
 
-    // API CALL
-    const getUsers = () => {
-        Axios.get('http://localhost:3001/users',{
-        }).then((response) => {
-            setUserList(response.data);
-            console.log("Searching " +pname + " within " + ptag +".");
-          });
-    };
+    // // API CALL
+    // const getUsers = () => {
+    //     Axios.get('http://localhost:3001/users',{
+    //     }).then((response) => {
+    //         setUserList(response.data);
+    //         console.log("Searching " +pname + " within " + ptag +".");
+    //       });
+    // };
 
 
     // Failed attempt of using params
-    // async function getUsers (){
-    //     const response = await Axios.get('http://localhost:3001/users',
-    //     {
-    //         params: {
-    //             ptag: "electronics",
-    //             pname: "tv",
-    //         }
-    //     });
-    //     setUserList(response.data);
-    // };
+    async function getUsers (){
+        const response = await Axios.get('http://localhost:3001/users',
+        {
+            params: {
+                ptag: ptag,
+                pname: pname,
+            }
+        });
+        setUserList(response.data);
+    };
 
     // Find a way to display getUsers without needing onClick for default display
     return (
@@ -47,7 +47,7 @@ function Results() {
         <Form.Select>
         <option value ="*" onClick={(event) => {setPTag("*");}}>None</option>
         <option value ="books" onClick={(event) => {setPTag("books");}}>Books</option>
-        <option value ="electronics" onClick={(event) => {setPTag("electronics");}}>ELectronics</option>
+        <option value ="electronics" onClick={(event) => {setPTag("electronics");}}>Electronics</option>
         <option value ="furniture" onClick={(event) => {setPTag("furniture");}}>Furniture</option>
         </Form.Select>
         {/* Search Bar */}
